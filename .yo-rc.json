@@ -24,7 +24,7 @@
     "enableTranslation": false,
     "nativeLanguage": "en",
     "languages": ["en"],
-    "clientFramework": "angularX",
+    "clientFramework": "vue",
     "jhiPrefix": "jhi",
     "withAdminUi": true,
     "jhipsterVersion": "7.1.0",

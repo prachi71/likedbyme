@@ -1,0 +1,78 @@
+entity Recommendation {
+     stars Integer
+    review String
+     createDate Instant
+    modDate   Instant
+}
+entity Tag {
+	name String
+	createDate Instant
+    modDate Instant
+}
+entity Verification {
+	method String
+	sentDate Instant
+	verifiactionText String
+	verificationResponse String
+	verified Boolean
+}
+
+entity RecoGroups {
+	groupName String
+    createdDate Instant
+    modifiedDate Instant
+}
+
+entity RecoGroupMembers {
+	
+    joinedDate Instant
+    modifiedDate Instant
+}
+
+
+entity Categories {
+    
+	name String,
+	createdDate Instant,
+	modDate Instant,
+	icon String
+}
+
+entity Contact {
+	name String
+    number String
+    email String
+    country String
+    street String
+    city String
+    state String
+    zip String    
+}
+
+entity OnlineProfile {
+    website String
+    twitter String
+    facebook String
+}
+
+entity Profiles {
+    fullProfileImageFile String
+    smallProfileImageFile String
+}
+
+
+relationship OneToOne {
+    Recommendation{from(name) required} to Contact
+    Recommendation{recommendedProfile(name) required} to Profiles
+    Recommendation{tag(name)} to Tag
+    Recommendation{group(name)} to RecoGroups
+    Recommendation{verification} to Verification
+    Recommendation{category(name) required} to Categories
+    Profiles{contact(name) required} to Contact
+    Profiles{onlineProfile(website)} to OnlineProfile
+}
+
+relationship OneToMany {
+	RecoGroups to RecoGroupMembers{group required},
+	
+}
